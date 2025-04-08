@@ -1,0 +1,17 @@
+/* #contenido{
+    margin: 1%;
+    justify-content: center;
+    background-color: red;
+    gap: 10px; 
+} */
+.pagination {
+    flex-wrap: wrap; /* Hace que las páginas se ajusten en varias líneas si es necesario */
+  }
+body{
+    background-color: rgb(52, 58, 65);
+}
+#contenedorPersonajes{
+    background-color: rgb(110, 119, 111);
+    border-radius: 1%;
+    padding: 1%;
+}

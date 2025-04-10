@@ -6,10 +6,10 @@ export const api2 = {
             if (!res.ok) {
                 throw new Error(`HTTP Error. Status: ${res.status}`);
             }
-            
+
             const data = await res.json();
             console.log(data);
-            // console.log(data.info.next); // Confirmamos el valor de next
+            // console.log(data.info.next); 
             return data;
         } catch (err) {
             console.error("Error al cargar los personajes:", err);

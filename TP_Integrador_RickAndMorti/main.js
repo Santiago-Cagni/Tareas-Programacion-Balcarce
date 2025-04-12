@@ -71,3 +71,41 @@ async function mostrarDetalles(id) {
     }
   }
 
+
+  
+  function filtrarPersonajes() {
+    const nameFilter = document.getElementById('name');
+    const statusFilter = document.getElementById('status');
+    const speciesFilter = document.getElementById('species');
+    const typeFilter = document.getElementById('type');
+    const genderFilter = document.getElementById('gender');
+
+    const queryParams = [];
+  
+    if (nameFilter.value) queryParams.push(`name=${nameFilter.value}`);
+    if (statusFilter.value) queryParams.push(`status=${statusFilter.value}`);
+    if (speciesFilter.value) queryParams.push(`species=${speciesFilter.value}`);
+    if (typeFilter.value) queryParams.push(`type=${typeFilter.value}`);
+    if (genderFilter.value) queryParams.push(`gender=${genderFilter.value}`);
+  
+    const queryString = queryParams.join('&');
+    const fullUrl = `${URL_Personajes}?${queryString}`;
+  
+    actualizarPersonajes(fullUrl); // Asegurate que esta función esté definida
+  }
+  const form = document.getElementById("filtradForm");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  filtrarPersonajes();
+});
+
+  
+  
+
+    // if (gender) queryParams.push(`gender=${gender}`);
+  // if (species) queryParams.push(`species=${species}`);
+  // if (type) queryParams.push(`type=${type}`);
+  // if (name) queryParams.push(`name=${name}`);
+  
+  // 
+  // ;

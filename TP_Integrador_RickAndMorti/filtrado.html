@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +22,9 @@
 
     <h2>Filtrar personajes</h2>
 
-    <form id="formFiltro" class="row g-3">
-        <!-- Status (requerido) -->
+    <form id="filtradForm" class="row g-3">
+
+        Status
         <div class="col-md-3">
             <label for="status" class="form-label">Estado *</label>
             <select id="status" name="status" class="form-select" required>
@@ -33,13 +35,13 @@
             </select>
         </div>
 
-        <!-- Nombre  -->
+
         <div class="col-md-3">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" id="name" name="name" class="form-control" />
         </div>
 
-        <!-- Género -->
+
         <div class="col-md-3">
             <label for="gender" class="form-label">Género</label>
             <select id="gender" name="gender" class="form-select">
@@ -57,16 +59,27 @@
             <input type="text" id="species" name="species" class="form-control" />
         </div>
 
-        <!-- Tipo -->
+
         <div class="col-md-3">
             <label for="type" class="form-label">Tipo</label>
             <input type="text" id="type" name="type" class="form-control" />
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Filtrar</button>
+            <button id='botonFiltro' type="submit" class="btn btn-primary">Filtrar</button>
         </div>
     </form>
+
+    <article id="contenido">
+        <div id="contenedorPersonajes" class="d-flex flex-wrap justify-content-center gap-2 my-4">
+        </div>
+        </div>
+    </article>
+
+    <div class="d-flex justify-content-center gap-2 my-4">
+        <button id="btnAnterior" type="button" class="btn btn-outline-secondary">Anterior</button>
+        <button id="btnSiguiente" type="button" class="btn btn-outline-secondary">Siguiente</button>
+    </div>
 
 
     <script type="module" src="./main.js"></script>

@@ -7,16 +7,18 @@ async function actualizarPersonajes(url) {
         const contenedor = document.getElementById("contenedorPersonajes");
         
         function armarCarta(personaje) {
-            return `
-            <div>
-            <img src="${personaje.image}" alt="${personaje.name}" class="img-fluid">
-            <h5>${personaje.name}</h5>
-            <p> Estatus: ${personaje.status}</p> 
-            <p> Especie: ${personaje.species}</p>
-            <p> Origen: ${personaje.origin.name}</p>
-           <button class="btn btn-outline-secondary" id="verMas-${personaje.id}">Ver más</button>
+          return `
+            <div class="card text-bg-dark" style="width: 18rem;">
+              <img src="${personaje.image}" alt="${personaje.name}" class="card-img-top">
+              <div class="card-body">
+                <h4 class="card-title">${personaje.name}</h5>
+                <p class="card-text"><strong>Estado:</strong> ${personaje.status}</p>
+                <p class="card-text"><strong>Especie:</strong> ${personaje.species}</p>
+                <p class="card-text"><strong>Origen:</strong> ${personaje.origin.name}</p>
+                <button class="btn btn-outline-secondary" id="verMas-${personaje.id}">Ver más</button>
+              </div>
             </div>
-            `
+          `;
         }
 
         contenedor.innerHTML = data.results.map(armarCarta).join('');
@@ -29,25 +31,34 @@ async function actualizarPersonajes(url) {
               });
             }
           }
-
-        const botonSiguiente = document.getElementById("btnSiguiente");
-        const botonAnterior = document.getElementById("btnAnterior");
         
-        botonSiguiente.disabled = !data.info.next;
-        botonAnterior.disabled = !data.info.prev;
+        urlSiguiente = data.info.next;
+        urlAnterior = data.info.prev;
+    
+        botonSiguiente.disabled = !urlSiguiente;
+        botonAnterior.disabled = !urlAnterior;
 
-        botonSiguiente.addEventListener("click", () =>{
-            if (data.info.next) {
-                actualizarPersonajes(data.info.next); 
-            }
-        });
-        botonAnterior.addEventListener("click", ()=>{
-            if (data.info.prev) {
-                actualizarPersonajes(data.info.prev); 
-            }
-        })
     }
 }
+
+      let urlSiguiente = null;
+      let urlAnterior = null;
+
+      const botonSiguiente = document.getElementById("btnSiguiente");
+      const botonAnterior = document.getElementById("btnAnterior");
+
+      botonSiguiente.addEventListener("click", () => {
+        if (urlSiguiente) {
+          actualizarPersonajes(urlSiguiente);
+        }
+      });
+
+      botonAnterior.addEventListener("click", () => {
+        if (urlAnterior) {
+          actualizarPersonajes(urlAnterior);
+        }
+      });
+
 
 actualizarPersonajes(URL_Personajes);
 
@@ -58,12 +69,12 @@ async function mostrarDetalles(id) {
     if (data) {
       const modalBody = document.getElementById("modalContenido");
       modalBody.innerHTML = `
-        <img src="${data.image}" class="img-fluid mb-3">
-        <h5>${data.name}</h5>
-        <p><strong>Estado:</strong> ${data.status}</p>
-        <p><strong>Especie:</strong> ${data.species}</p>
-        <p><strong>Género:</strong> ${data.gender}</p>
-        <p><strong>Origen:</strong> ${data.origin.name}</p>
+        <img src="${data.image}" class="card-img-top">
+        <h4 class="modal-title">${data.name}</h5>
+        <p class="card-text"> <strong>Estado:</strong> ${data.status}</p>
+        <p class="card-text"><strong>Especie:</strong> ${data.species}</p>
+        <p class="card-text"><strong>Género:</strong> ${data.gender}</p>
+        <p class="card-text"><strong>Origen:</strong> ${data.origin.name}</p>
       `;
   
       const modal = new bootstrap.Modal(document.getElementById('modalPersonaje'));
@@ -71,41 +82,27 @@ async function mostrarDetalles(id) {
     }
   }
 
-
   
   function filtrarPersonajes() {
-    const nameFilter = document.getElementById('name');
+   
     const statusFilter = document.getElementById('status');
     const speciesFilter = document.getElementById('species');
-    const typeFilter = document.getElementById('type');
     const genderFilter = document.getElementById('gender');
 
     const queryParams = [];
   
-    if (nameFilter.value) queryParams.push(`name=${nameFilter.value}`);
     if (statusFilter.value) queryParams.push(`status=${statusFilter.value}`);
     if (speciesFilter.value) queryParams.push(`species=${speciesFilter.value}`);
-    if (typeFilter.value) queryParams.push(`type=${typeFilter.value}`);
     if (genderFilter.value) queryParams.push(`gender=${genderFilter.value}`);
   
     const queryString = queryParams.join('&');
     const fullUrl = `${URL_Personajes}?${queryString}`;
   
-    actualizarPersonajes(fullUrl); // Asegurate que esta función esté definida
+    actualizarPersonajes(fullUrl); 
   }
-  const form = document.getElementById("filtradForm");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  filtrarPersonajes();
-});
-
-  
-  
-
-    // if (gender) queryParams.push(`gender=${gender}`);
-  // if (species) queryParams.push(`species=${species}`);
-  // if (type) queryParams.push(`type=${type}`);
-  // if (name) queryParams.push(`name=${name}`);
-  
-  // 
-  // ;
+  const form = document.getElementById("filtradoForm");
+  form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      filtrarPersonajes();
+    }
+  );

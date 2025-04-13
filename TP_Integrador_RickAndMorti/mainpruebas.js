@@ -40,3 +40,31 @@ async function actualizarPersonajes(url) {
     }
 }
 actualizarPersonajes(URL_Personajes);
+
+
+  // async function obtenerEspeciesUnicas() {
+  //   const especies = new Set();
+  //   let url = 'https://rickandmortyapi.com/api/character';
+  
+  //   while (url) {
+  //     try {
+  //       const response = await fetch(url);
+  //       const data = await response.json();
+  
+  //       data.results.forEach(personaje => {
+  //         if (personaje.species) {
+  //           especies.add(personaje.species);
+  //         }
+  //       });
+  
+  //       url = data.info.next;
+  //     } catch (error) {
+  //       console.error('Error al obtener especies:', error);
+  //       break;
+  //     }
+  //   }
+  
+  //   console.log('Especies únicas:', [...especies]);
+  // }
+  
+  // obtenerEspeciesUnicas();

@@ -1,17 +1,46 @@
-/* #contenido{
-    margin: 1%;
-    justify-content: center;
-    background-color: red;
-    gap: 10px; 
-} */
-.pagination {
-    flex-wrap: wrap; /* Hace que las páginas se ajusten en varias líneas si es necesario */
-  }
+
 body{
     background-color: rgb(52, 58, 65);
+    overflow-x: hidden;
 }
 #contenedorPersonajes{
-    background-color: rgb(110, 119, 111);
-    border-radius: 1%;
+    background-color: rgb(35, 45, 54);
+    border-radius: 0.5%;
     padding: 1%;
 }
+#modalContenido{
+    background-color:rgb(35, 45, 54);
+}
+#modalContenido p{
+    color: antiquewhite;
+}
+
+#modalContenido h4{
+    color: antiquewhite;
+}
+
+.modal-header{
+    background-color: rgb(35, 45, 51);
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.modal-header h4{
+    color: aliceblue;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.form-label{
+    color: antiquewhite;
+}
+
+.card {
+    transition: transform 0.2s ease;
+  }
+  
+.card:hover {
+    transform: scale(1.05);
+  }

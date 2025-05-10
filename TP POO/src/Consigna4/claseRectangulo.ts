@@ -1,0 +1,22 @@
+class Rectangulo{
+    private base: number;
+    private altura: number;
+
+    constructor(base: number, altura: number) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    public calcularArea(): number {
+        return this.base * this.altura;
+    }
+
+    public calcularPerimetro(): number {
+        return 2 * (this.base + this.altura);
+    }
+}
+
+let rectanguloPrueba = new Rectangulo(2, 6);
+rectanguloPrueba.calcularArea();
+rectanguloPrueba.calcularPerimetro();
+console.log(rectanguloPrueba);

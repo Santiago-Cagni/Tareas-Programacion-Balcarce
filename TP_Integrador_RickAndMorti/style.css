@@ -3,11 +3,7 @@ body{
     background-color: rgb(52, 58, 65);
     overflow-x: hidden;
 }
-#contenedorPersonajes{
-    background-color: rgb(35, 45, 54);
-    border-radius: 0.5%;
-    padding: 1%;
-}
+
 #modalContenido{
     background-color:rgb(35, 45, 54);
 }

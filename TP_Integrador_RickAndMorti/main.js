@@ -22,7 +22,7 @@ async function actualizarPersonajes(url) {
         }
 
         contenedor.innerHTML = data.results.map(armarCarta).join('');
-
+        
         for (const personaje of data.results) {
             const btnVerMas = document.getElementById(`verMas-${personaje.id}`);
             if (btnVerMas) {
@@ -82,7 +82,7 @@ async function mostrarDetalles(id) {
     }
   }
 
-  
+
   function filtrarPersonajes() {
    
     const statusFilter = document.getElementById('status');
